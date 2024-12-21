@@ -1,0 +1,34 @@
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-maven-plugin</artifactId>
+            <version>0.0.8</version>
+            <executions>
+                <execution>
+                    <id>default-cli</id>
+                    <configuration>
+                        <mainClass>com.example.MainApp</mainClass> <!-- Remplacez par votre classe principale -->
+                    </configuration>
+                </execution>
+            </executions>
+            <configuration>
+                <launcher>Launcher</launcher>
+                <mainClass>com.example.MainApp</mainClass>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
+<dependencies>
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-controls</artifactId>
+        <version>17.0.10</version> <!-- Utilisez la version correspondant à votre JDK -->
+    </dependency>
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-fxml</artifactId>
+        <version>17</version>
+    </dependency>
+</dependencies>

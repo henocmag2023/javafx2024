@@ -1,0 +1,33 @@
+public class CommandeController {
+    @FXML private TextField txtTelephone;
+    @FXML private TextField txtNomClient;
+    @FXML private TextField txtAdresseClient;
+    @FXML private ComboBox<Article> comboBoxArticles;
+    @FXML private TableView<ArticleCommande> tableViewArticles;
+    @FXML private Label lblTotal;
+
+    private CommandeService commandeService;
+
+    public void rechercherClient() {
+        String telephone = txtTelephone.getText();
+        Client client = commandeService.findClientByTelephone(telephone);
+        if (client != null) {
+            txtNomClient.setText(client.getNom() + " " + client.getPrenom());
+            txtAdresseClient.setText(client.getVille() + ", " + client.getQuartier() + ", " + client.getNumeroVilla());
+            // Activer la section de commande
+        } else {
+            // Désactiver la section commande
+        }
+    }
+
+    public void ajouterArticle() {
+        Article article = comboBoxArticles.getValue();
+        int quantite = Integer.parseInt(txtQuantite.getText());
+        double prix = Double.parseDouble(txtPrix.getText());
+        commandeService.ajouterArticleCommande(currentCommande, article, quantite, prix);
+
+        // Mettre à jour l'affichage
+        tableViewArticles.getItems().add(new ArticleCommande(article, quantite, prix));
+        lblTotal.setText(String.valueOf(commandeService.calculerTotalCommande(currentCommande)));
+    }
+}
